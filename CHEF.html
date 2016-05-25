@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+
+
+<audio id="ding" src="ding.mp3" preload="auto"></audio>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">            <br><br><br><br>
+
+            <h3>INGREDIENTS</h3>
+            <br>
+            1 3⁄4 cups unbleached all-purpose flour (8 3/4 ounces)<br>
+            1⁄2 teaspoon baking soda<br>
+            14 tablespoons unsalted butter (1 3/4 sticks)<br>
+            1⁄2 cup granulated sugar (3 1/2 ounces)<br>
+            3⁄4 cup packed dark brown sugar (5 1/4 ounces)<br>
+            1 teaspoon salt<br>
+            2 teaspoons vanilla extract<br>
+            1 large egg<br>
+            1 large egg yolk<br>
+            1 1⁄2 cups bittersweet chocolate chips (Ghirardelli recommended) or 1 1⁄2 cups semi-sweet chocolate chips (Ghirardelli recommended)<br>
+            3⁄4 cup chopped pecans (optional) or 3⁄4 cup walnuts, toasted (optional)<br><br>
+            <b>YIELD:</b> 16 very large cookies
+
+        </div>
+        <div class="col-sm-6"><h3 class="centered-title">HERE IS THE TITLE</h3>
+            <br>
+            <h3>DIRECTIONS</h3>
+            1. Adjust oven rack to middle position and heat oven to 375 degrees. Line 2 large (18- by 12- inch) baking sheets with parchment paper. Whisk flour and baking soda together in medium bowl; set aside.
+            <br><br>2. Heat 10 tablespoons butter in 10 inch skillet over medium-high heat until melted, about 2 minutes. Continue cooking, swirling pan constantly until butter is dark golden brown and has nutty aroma, 1 to 3 minutes. Remove skillet from heat and, using heatproof spatula, transfer browned butter to large heatproof bowl. Stir remaining 4 tablespoons butter into hot butter until completely melted.
+            <br> <br>3. Add both sugars, salt, and vanilla to bowl with butter and whisk until fully incorporated. Add egg and yolk and whisk until mixture is smooth with no sugar lumps remaining, about 30 seconds. Let mixture stand 3 minutes, then whisk for 30 seconds. Repeat process of resting and whisking 2 more times until mixture is thick, smooth and shiny. Using rubber spatula or wooden spoon, stir in flour mixture until just combined, about 1 minute. Stir in chocolate chips and nuts (if using), giving dough final stir to ensure no flour pockets remain.
+            <br> <br>4. Divide dough into 16 portions, each about 3 tablespoons (or use #24 cookie scoop). Arrange 2 inches apart on prepared baking sheets, 8 dough balls per sheet. (Smaller baking sheets can be used, but will require 3 batches.).
+            <br> <br>5. Bake cookies 1 tray at a time until cookies are golden brown and still puffy, and edges have begun to set but centers are still soft, 10 to 14 minutes, rotating baking sheet halfway through baking. Transfer baking seet to wire rack; cool cookies completely before serving.        </div>
+        <div class="col-sm-3"><p id="status"><br><br><br><br><h3>Status:</h3><p> Listening...</p></p>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.4.0/annyang.min.js"></script>
+<script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<script src="js/bootstrap.js"></script>
+<script src="css/recipe-style.css"></script>
+
+<script>
+
+
+    wit_result = "";
+    // Test browser support
+    window.SpeechRecognition = window.SpeechRecognition ||
+            window.webkitSpeechRecognition ||
+            null;
+
+    if (window.SpeechRecognition === null) {
+        document.getElementById('ws-unsupported').classList.remove('hidden');
+        document.getElementById('button-play-ws').setAttribute('disabled', 'disabled');
+        document.getElementById('button-stop-ws').setAttribute('disabled', 'disabled');
+        console.log("can't do speech rec")
+    } else {
+        var recognizer = new window.SpeechRecognition();
+        var transcription = document.getElementById('transcription');
+        var log = document.getElementById('log');
+
+        //text-to-voice stuff
+        var su = new SpeechSynthesisUtterance();
+        su.lang = "en";
+        su.text = "Hello World";
+        speechSynthesis.speak(su);
+    }
+
+    var getWitResponse = function (fulltext) {
+//        document.getElementById('status').innerHTML = "Status: Responding";
+        document.getElementById('ding').play();
+        result_object = $.ajax({
+            url: 'https://api.wit.ai/message',
+            data: {
+                'q': fulltext,
+                'access_token' : 'AXIII6X7MAX2KW6FD27UFMT3VVQXM6WO'
+            },
+            dataType: 'jsonp',
+            method: 'GET',
+            success: function(response) {
+                wit_result = response;
+                console.log("success!", response);
+                console.log(response['outcomes']);
+                if (wit_result['outcomes'][0]['entities']['food'][0]['value']=="salt") {
+                    su.lang = "en";
+                    su.text = "You need 2 teaspoons of salt";
+                }
+                else {
+                    su.lang = "en";
+                    su.text = "There isn't even" + wit_result['outcomes'][0]['entities']['food'][0]['value'].toString() + " in this recipe";
+                }
+                speechSynthesis.speak(su);
+            }
+        });
+    };
+
+    var showFlickr = function(tag) {
+        document.getElementById('status').innerHTML = "Status: Responding";
+        document.getElementById('ding').play();
+        console.log("show me" + " " + tag.toString());
+        su.lang = "en";
+        su.text = "THIS IS A MUCH LONGER UTTERANCE BASED ON YOUR " + tag.toString();
+        speechSynthesis.speak(su);
+        annyang.resume();
+        document.getElementById('status').innerHTML = "Status: Listening...";
+
+    };
+
+    var calculateStats = function(month) {
+        $('#stats').text('Statistics for '+month);
+    };
+
+    var greeting = function() {
+        $('#greeting').text('Hello!');
+    };
+
+    var ingredientAmount = function(ingredient) {
+        document.getElementById('status').innerHTML = "Status: Responding";
+        document.getElementById('ding').play();
+        annyang.pause();
+
+        if (ingredient == "broccoli") {
+            //text-to-voice stuff
+            su.lang = "en";
+            su.text = "Use one half cup. Broccoli is the best.";
+            speechSynthesis.speak(su);
+        }
+        else {
+            su.lang = "en";
+            su.text = "Why do you want to know about anything that isn't broccoli?";
+            speechSynthesis.speak(su);
+        }
+
+        annyang.resume();
+        document.getElementById('status').innerHTML = "Status: Listening...";
+
+    };
+
+
+    var nextStep = function() {
+        document.getElementById('status').innerHTML = "Status: Responding";
+        document.getElementById('ding').play();
+        annyang.pause();
+        //text-to-voice stuff
+        su.lang = "en";
+        su.text = "Hello World";
+        speechSynthesis.speak(su);
+        annyang.resume();
+        document.getElementById('status').innerHTML = "Status: Listening...";
+
+    };
+
+    var commands = {
+        // annyang will capture anything after a splat (*) and pass it to the function.
+        // e.g. saying "Show me Batman and Robin" is the same as calling showFlickr('Batman and Robin');
+        'show me *tag': showFlickr,
+
+        // A named variable is a one word variable, that can fit anywhere in your command.
+        // e.g. saying "calculate October stats" will call calculateStats('October');
+        'calculate :month stats': calculateStats,
+
+        // By defining a part of the following command as optional, annyang will respond to both:
+        // "say hello to my little friend" as well as "say hello friend"
+        'say hello (to my little) friend': greeting,
+
+        'next (step)': nextStep,
+
+        'how much *ingredient do I need': ingredientAmount,
+
+        'Computer *fulltext': getWitResponse
+    };
+
+
+
+    console.log("listening2");
+
+    if (annyang) {
+        // Add our commands to annyang
+        annyang.addCommands(commands);
+
+        // Start listening. You can call this here, or attach this call to an event, button, etc.
+        annyang.start();
+        console.log("listening");
+    }
+</script>
+
+
+<body>
+
+</body>
+</html>
