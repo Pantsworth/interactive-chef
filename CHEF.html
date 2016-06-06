@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>CHEFBOTSOUS</title>
 </head>
 
 
@@ -20,167 +20,388 @@
             14 tablespoons unsalted butter (1 3/4 sticks)<br>
             1⁄2 cup granulated sugar (3 1/2 ounces)<br>
             3⁄4 cup packed dark brown sugar (5 1/4 ounces)<br>
-            1 teaspoon salt<br>
+            1/4 teaspoon salt<br>
             2 teaspoons vanilla extract<br>
             1 large egg<br>
             1 large egg yolk<br>
             1 1⁄2 cups bittersweet chocolate chips (Ghirardelli recommended) or 1 1⁄2 cups semi-sweet chocolate chips (Ghirardelli recommended)<br>
-            3⁄4 cup chopped pecans (optional) or 3⁄4 cup walnuts, toasted (optional)<br><br>
+            <br>
             <b>YIELD:</b> 16 very large cookies
 
         </div>
-        <div class="col-sm-6"><h3 class="centered-title">HERE IS THE TITLE</h3>
+        <div class="col-sm-6"><h2 class="centered-title">CHOCOLATE CHIP COOKIES</h2>
             <br>
             <h3>DIRECTIONS</h3>
-            1. Adjust oven rack to middle position and heat oven to 375 degrees. Line 2 large (18- by 12- inch) baking sheets with parchment paper. Whisk flour and baking soda together in medium bowl; set aside.
-            <br><br>2. Heat 10 tablespoons butter in 10 inch skillet over medium-high heat until melted, about 2 minutes. Continue cooking, swirling pan constantly until butter is dark golden brown and has nutty aroma, 1 to 3 minutes. Remove skillet from heat and, using heatproof spatula, transfer browned butter to large heatproof bowl. Stir remaining 4 tablespoons butter into hot butter until completely melted.
-            <br> <br>3. Add both sugars, salt, and vanilla to bowl with butter and whisk until fully incorporated. Add egg and yolk and whisk until mixture is smooth with no sugar lumps remaining, about 30 seconds. Let mixture stand 3 minutes, then whisk for 30 seconds. Repeat process of resting and whisking 2 more times until mixture is thick, smooth and shiny. Using rubber spatula or wooden spoon, stir in flour mixture until just combined, about 1 minute. Stir in chocolate chips and nuts (if using), giving dough final stir to ensure no flour pockets remain.
-            <br> <br>4. Divide dough into 16 portions, each about 3 tablespoons (or use #24 cookie scoop). Arrange 2 inches apart on prepared baking sheets, 8 dough balls per sheet. (Smaller baking sheets can be used, but will require 3 batches.).
-            <br> <br>5. Bake cookies 1 tray at a time until cookies are golden brown and still puffy, and edges have begun to set but centers are still soft, 10 to 14 minutes, rotating baking sheet halfway through baking. Transfer baking seet to wire rack; cool cookies completely before serving.        </div>
-        <div class="col-sm-3"><p id="status"><br><br><br><br><h3>Status:</h3><p> Listening...</p></p>
+            <div id="steps">
+            <!--<div id="step1">1. Adjust oven rack to middle position and heat oven to 375 degrees. Line 2 large (18- by 12- inch) baking sheets with parchment paper. Whisk flour and baking soda together in medium bowl; set aside.-->
+            <!--</div>-->
+            <!--<br><br>-->
+            <!--<div id = "step2"> 2. Heat 10 tablespoons butter in 10 inch skillet over medium-high heat until melted, about 2 minutes. Continue cooking, swirling pan constantly until butter is dark golden brown and has nutty aroma, 1 to 3 minutes. Remove skillet from heat and, using heatproof spatula, transfer browned butter to large heatproof bowl. Stir remaining 4 tablespoons butter into hot butter until completely melted.-->
+            <!--</div>-->
+            <!--<br> <br>-->
+            <!--<div id = "step3">3. Add both sugars, salt, and vanilla to bowl with butter and whisk until fully incorporated. Add egg and yolk and whisk until mixture is smooth with no sugar lumps remaining, about 30 seconds. Let mixture stand 3 minutes, then whisk for 30 seconds. Repeat process of resting and whisking 2 more times until mixture is thick, smooth and shiny. Using rubber spatula or wooden spoon, stir in flour mixture until just combined, about 1 minute. Stir in chocolate chips and nuts (if using), giving dough final stir to ensure no flour pockets remain.-->
+            <!--</div>-->
+            <!--<br> <br>-->
+            <!--<div id = "step4">4. Divide dough into 16 portions, each about 3 tablespoons (or use #24 cookie scoop). Arrange 2 inches apart on prepared baking sheets, 8 dough balls per sheet. (Smaller baking sheets can be used, but will require 3 batches.).-->
+            <!--</div>-->
+            <!--<br> <br>-->
+            <!--<div id = "step5">5. Bake cookies 1 tray at a time until cookies are golden brown and still puffy, and edges have begun to set but centers are still soft, 10 to 14 minutes, rotating baking sheet halfway through baking. Transfer baking seet to wire rack; cool cookies completely before serving.        </div>-->
+            <!--</div>-->
+            </div>
+        <div id="clock" class="col-sm-3"><p><br><br><br><br><h3>Status:</h3><p id="status"> Listening...</p><br><p id='log'></p>
+            <h3><div id="timerdiv"></div></h3>
         </div>
+    </div>
     </div>
 </div>
 
 
+</html>
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.4.0/annyang.min.js"></script>
-<script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-<script src="js/bootstrap.js"></script>
-<script src="css/recipe-style.css"></script>
+<!--<script src="js/bootstrap.js"></script>-->
+<link rel="stylesheet" type="text/css" href="css/recipe-style.css">
 
+<!--<script>-->
+    <!--function startTime() {-->
+        <!--var today = new Date();-->
+        <!--var h = today.getHours();-->
+        <!--var m = today.getMinutes()+2;-->
+        <!--var s = today.getSeconds();-->
+        <!--m = checkTime(m);-->
+        <!--s = checkTime(s);-->
+        <!--document.getElementById('log').innerHTML =-->
+                <!--h + ":" + m + ":" + s;-->
+        <!--var t = setTimeout(startTime, 500);-->
+    <!--}-->
+    <!--function checkTime(i) {-->
+        <!--if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10-->
+        <!--return i;-->
+    <!--}-->
+<!--</script>-->
 <script>
+    var Small = {
+        'zero': 0,
+        'one': 1,
+        'two': 2,
+        'three': 3,
+        'four': 4,
+        'five': 5,
+        'six': 6,
+        'seven': 7,
+        'eight': 8,
+        'nine': 9,
+        'ten': 10,
+        'eleven': 11,
+        'twelve': 12,
+        'thirteen': 13,
+        'fourteen': 14,
+        'fifteen': 15,
+        'sixteen': 16,
+        'seventeen': 17,
+        'eighteen': 18,
+        'nineteen': 19,
+        'twenty': 20,
+        'thirty': 30,
+        'forty': 40,
+        'fifty': 50,
+        'sixty': 60,
+        'seventy': 70,
+        'eighty': 80,
+        'ninety': 90
+    };
 
+    var Magnitude = {
+        'thousand':     1000,
+        'million':      1000000,
+        'billion':      1000000000,
+        'trillion':     1000000000000,
+        'quadrillion':  1000000000000000,
+        'quintillion':  1000000000000000000,
+        'sextillion':   1000000000000000000000,
+        'septillion':   1000000000000000000000000,
+        'octillion':    1000000000000000000000000000,
+        'nonillion':    1000000000000000000000000000000,
+        'decillion':    1000000000000000000000000000000000
+    };
+
+    var a, n, g;
+
+    function text2num(s) {
+        a = s.toString().split(/[\s-]+/);
+        n = 0;
+        g = 0;
+        a.forEach(feach);
+        return n + g;
+    }
+    console.log(text2num("bunch of extra text thirty two"));
+
+    function feach(w) {
+        var x = Small[w];
+        if (x != null) {
+            g = g + x;
+        }
+        else if (w == "hundred") {
+            g = g * 100;
+        }
+        else {
+            x = Magnitude[w];
+            if (x != null) {
+                n = n + g * x;
+                g = 0;
+            }
+            else {
+//                alert("Unknown number: "+w);
+            }
+        }
+    }
+</script>
+<script>
+    ingredients_list = ["1 teaspoon salt", "2 teaspoons vanilla extract", "one large egg", "one large egg yolk",
+        "1 and 3 fourths of a cup all-purpose flour", "14 tablespoons unsalted butter, or one point seven five sticks",
+        "one half teaspoon baking soda", "one half cup granulated sugar", "three fourths of a cup dark brown sugar",
+        "one point five cups bittersweet chocolate chips"];
+
+    step_list = ["","1. Adjust oven rack to middle position and heat oven to 375 degrees. Line 2 large (18- by 12- inch) baking sheets with parchment paper.", "2. Whisk flour and baking soda together in medium bowl; set aside.",
+            "3. Heat 10 tablespoons butter in 10 inch skillet over medium-high heat until melted, about 2 minutes.",
+            "4. Continue cooking, swirling pan constantly until butter is dark golden brown and has nutty aroma, 1 to 3 minutes.",
+            "5. Remove skillet from heat and, using heatproof spatula, transfer browned butter to large heatproof bowl. Stir remaining 4 tablespoons butter into hot butter until completely melted.",
+            "6. Add both sugars, salt, and vanilla to bowl with butter and whisk until fully incorporated.",
+            "7.Add egg and yolk and whisk until mixture is smooth with no sugar lumps remaining, about 30 seconds.",
+            "8. Let mixture stand 3 minutes, then whisk for 30 seconds. Repeat process of resting and whisking 2 more times until mixture is thick, smooth and shiny.",
+            "9. Using rubber spatula or wooden spoon, stir in flour mixture until just combined, about 1 minute.",
+            "10. Stir in chocolate chips, giving dough final stir to ensure no flour pockets remain.",
+            "11. Divide dough into 16 portions, each about 3 tablespoons. Arrange 2 inches apart on prepared baking sheets, 8 dough balls per sheet.",
+            "12. Bake cookies 1 tray at a time until cookies are golden brown and still puffy, and edges have begun to set but centers are still soft, 10 to 14 minutes, rotating baking sheet halfway through baking."];
+
+    current_step = 1;
 
     wit_result = "";
     // Test browser support
     window.SpeechRecognition = window.SpeechRecognition ||
             window.webkitSpeechRecognition ||
             null;
-
     if (window.SpeechRecognition === null) {
         document.getElementById('ws-unsupported').classList.remove('hidden');
         document.getElementById('button-play-ws').setAttribute('disabled', 'disabled');
         document.getElementById('button-stop-ws').setAttribute('disabled', 'disabled');
         console.log("can't do speech rec")
-    } else {
+    }
+
+    else {
         var recognizer = new window.SpeechRecognition();
         var transcription = document.getElementById('transcription');
         var log = document.getElementById('log');
 
         //text-to-voice stuff
         var su = new SpeechSynthesisUtterance();
+        su.rate = 0.75;
         su.lang = "en";
-        su.text = "Hello World";
-        speechSynthesis.speak(su);
+        su.text = "Haggis World";
+        sayThings();
     }
 
+    //************************************** FETCHES WIT RESPONSE + RUNS FUNCTIONS *************************************
     var getWitResponse = function (fulltext) {
-//        document.getElementById('status').innerHTML = "Status: Responding";
-        document.getElementById('ding').play();
-        result_object = $.ajax({
-            url: 'https://api.wit.ai/message',
-            data: {
-                'q': fulltext,
-                'access_token' : 'AXIII6X7MAX2KW6FD27UFMT3VVQXM6WO'
-            },
-            dataType: 'jsonp',
-            method: 'GET',
-            success: function(response) {
-                wit_result = response;
-                console.log("success!", response);
-                console.log(response['outcomes']);
-                if (wit_result['outcomes'][0]['entities']['food'][0]['value']=="salt") {
-                    su.lang = "en";
-                    su.text = "You need 2 teaspoons of salt";
+
+        responding();
+        console.log(fulltext);
+
+
+        next_test = fulltext.indexOf("next");
+        previous_test = fulltext.indexOf("previous");
+        last_test = fulltext.indexOf("last");
+        repeat_test = fulltext.indexOf("repeat");
+        timer_test = fulltext.indexOf("timer");
+
+        document.getElementById('log').innerHTML= "I heard: " + fulltext + "<br>" + document.getElementById('log').innerHTML;
+
+
+        // CATCH ALL THE STEP QUERIES TO SPEED RETURNS (VERY SIMPLE PROCESSING)
+        if ((fulltext.indexOf("next") !== -1) || (fulltext.indexOf("Next")!==-1) || (fulltext.indexOf("forward")!==-1))  {
+            nextStep();
+        }
+        else if ((previous_test !== -1) || (last_test!==-1) || (fulltext.indexOf("Previous")!==-1)) {
+            previousStep();
+        }
+
+        else if ((fulltext.indexOf("repeat")!==-1) && fulltext.indexOf("step")!==-1) {
+            repeatStep();
+        }
+
+        else if (timer_test!=-1) {
+            console.log("setting timer...");
+            console.log(parseInt(fulltext));
+
+            if ((fulltext.indexOf("how much")!=-1) || (fulltext.indexOf("left"))) {
+            }
+            else if ((fulltext.indexOf("set")!=-1) || fulltext.indexOf("make")!=-1) {
+                console.log(text2num(fulltext));
+                console.log(parseFloat(fulltext));
+            }
+        }
+
+
+
+        else {
+            result_object = $.ajax({
+                url: 'https://api.wit.ai/message',
+                data: {
+                    'q': fulltext,
+                    'access_token': 'AXIII6X7MAX2KW6FD27UFMT3VVQXM6WO'
+                },
+                dataType: 'jsonp',
+                method: 'GET',
+                success: function (response) {
+                    wit_result = response;
+                    console.log("success!", response);
+                    console.log(response['outcomes']);
+
+                    if (typeof(wit_result['outcomes'][0]['entities'] !== 'undefined')) {
+                        if (typeof(wit_result['outcomes'][0]['entities']['food'][0]['value']) !== 'undefined') {
+                            console.log(wit_result['outcomes'][0]['entities']['food'][0]['value']);
+                            ingredient_amounts();
+                        }
+                    }
+
+                    else {
+                        su.text = "Sorry, I didn't quite catch that";
+                        sayThings();
+                    }
+                }
+            });
+        }
+        listening();
+    };
+
+
+    //************************************** SPEAKS INGREDIENT AMOUNTS *************************************
+    function ingredient_amounts() {
+        found = false;
+        spoken_text = "";
+        su.text = "";
+        search_term = wit_result['outcomes'][0]['entities']['food'][0]['value'].toString();
+
+
+        for (i=0; i < ingredients_list.length; i++) {
+            console.log(ingredients_list[i]);
+            console.log("search term is: " + search_term);
+            if (search_term == "flower")  { result = "flour"; }
+            result = ingredients_list[i].indexOf(wit_result['outcomes'][0]['entities']['food'][0]['value'].toString());
+            console.log(result);
+            if (result == -1) { }
+            else {
+                if (!found) {
+                    su.text = ingredients_list[i].toString();
                 }
                 else {
-                    su.lang = "en";
-                    su.text = "There isn't even" + wit_result['outcomes'][0]['entities']['food'][0]['value'].toString() + " in this recipe";
+                    su.text = su.text + " " + ingredients_list[i].toString();
                 }
-                speechSynthesis.speak(su);
+                console.log("the spoken text is: " + su.text);
+                found=true;
+                console.log("FOUND!!!!");
             }
-        });
-    };
-
-    var showFlickr = function(tag) {
-        document.getElementById('status').innerHTML = "Status: Responding";
-        document.getElementById('ding').play();
-        console.log("show me" + " " + tag.toString());
-        su.lang = "en";
-        su.text = "THIS IS A MUCH LONGER UTTERANCE BASED ON YOUR " + tag.toString();
-        speechSynthesis.speak(su);
-        annyang.resume();
-        document.getElementById('status').innerHTML = "Status: Listening...";
-
-    };
-
-    var calculateStats = function(month) {
-        $('#stats').text('Statistics for '+month);
-    };
-
-    var greeting = function() {
-        $('#greeting').text('Hello!');
-    };
-
-    var ingredientAmount = function(ingredient) {
-        document.getElementById('status').innerHTML = "Status: Responding";
-        document.getElementById('ding').play();
-        annyang.pause();
-
-        if (ingredient == "broccoli") {
-            //text-to-voice stuff
-            su.lang = "en";
-            su.text = "Use one half cup. Broccoli is the best.";
-            speechSynthesis.speak(su);
-        }
-        else {
-            su.lang = "en";
-            su.text = "Why do you want to know about anything that isn't broccoli?";
-            speechSynthesis.speak(su);
         }
 
-        annyang.resume();
-        document.getElementById('status').innerHTML = "Status: Listening...";
+        if (!found) {
+            su.text = "There isn't even" + wit_result['outcomes'][0]['entities']['food'][0]['value'].toString() + " in this recipe";
+        }
+        sayThings();
+    }
 
-    };
+    //************************************** TEXT TO SPEECH *************************************
 
-
-    var nextStep = function() {
-        document.getElementById('status').innerHTML = "Status: Responding";
-        document.getElementById('ding').play();
+    function sayThings() {
         annyang.pause();
-        //text-to-voice stuff
-        su.lang = "en";
-        su.text = "Hello World";
+        appendToLog();
         speechSynthesis.speak(su);
         annyang.resume();
-        document.getElementById('status').innerHTML = "Status: Listening...";
+    }
 
-    };
+    function consoleSayThings(string) {
+        annyang.pause();
+        appendToLog();
+        su.text = string;
+        speechSynthesis.speak(su);
+        annyang.resume();
+    }
+
+    //************************************** UI ELEMENTS *************************************
+    function responding() {
+        document.getElementById('status').innerHTML= "Responding...";
+        document.getElementById('ding').play();
+
+    }
+
+    function listening() {
+        document.getElementById('status').innerHTML= "Listening...";
+    }
+
+    function appendToLog() {
+        document.getElementById('log').innerHTML= su.text + "<br>" + document.getElementById('log').innerHTML;
+    }
+
+    function repeatStep() {
+        annyang.pause();
+        su.text = step_list[current_step];
+        appendToLog();
+        speechSynthesis.speak(su);
+        annyang.resume();
+    }
+
+
+    //************************************** STEP CHANGES *************************************
+    function nextStep() {
+        document.getElementById('ding').play();
+        current_step = current_step+1;
+
+        // REMOVE FORMATTING FROM OLD STEP
+        document.getElementById("step" + (current_step-1).toString()).innerHTML = step_list[current_step-1];
+
+        // BOLD and HEADLINE THE NEW STEP
+        document.getElementById("step" + current_step.toString()).innerHTML = "<b><h2>" + document.getElementById('step' + current_step).innerHTML + "</h2></b>";
+
+        su.text = step_list[current_step];
+        sayThings();
+    }
+
+    function previousStep() {
+        if (current_step !== 1) {
+            current_step = current_step - 1;
+            // REMOVE FORMATTING FROM OLD STEP
+            document.getElementById("step" + (current_step+1).toString()).innerHTML = step_list[current_step+1];
+
+            // BOLD and HEADLINE THE NEW STEP
+            document.getElementById("step" + current_step.toString()).innerHTML = "<b><h2>" + document.getElementById('step' + current_step).innerHTML + "</h2></b>";
+            su.text = step_list[current_step];
+
+        }
+        else {  su.text = "You are on the first step. First step is: " + step_list[current_step];   }
+        sayThings();
+    }
+
+
+
+    //************************************** THE BASICS *************************************
+    function startUp() {
+        dir_list = "";
+        for (i=1; i<step_list.length;i++) {
+            dir_list = dir_list + "<br><div" + " id=" + "step" + i.toString() +  ">" + step_list[i] + "</div>";
+        }
+//        console.log(dir_list);
+        document.getElementById('steps').innerHTML = dir_list;
+        document.getElementById("step" + current_step.toString()).innerHTML = "<b><h2>" + document.getElementById('step' + current_step).innerHTML + "</h2></b>";
+
+//        initializeClock('timerdiv', 1.5);
+    }
 
     var commands = {
-        // annyang will capture anything after a splat (*) and pass it to the function.
-        // e.g. saying "Show me Batman and Robin" is the same as calling showFlickr('Batman and Robin');
-        'show me *tag': showFlickr,
-
-        // A named variable is a one word variable, that can fit anywhere in your command.
-        // e.g. saying "calculate October stats" will call calculateStats('October');
-        'calculate :month stats': calculateStats,
-
-        // By defining a part of the following command as optional, annyang will respond to both:
-        // "say hello to my little friend" as well as "say hello friend"
-        'say hello (to my little) friend': greeting,
-
-        'next (step)': nextStep,
-
-        'how much *ingredient do I need': ingredientAmount,
-
         'Computer *fulltext': getWitResponse
     };
-
-
 
     console.log("listening2");
 
@@ -191,11 +412,48 @@
         // Start listening. You can call this here, or attach this call to an event, button, etc.
         annyang.start();
         console.log("listening");
+        startUp();
+    }
+
+    // TIMER code thanks to https://www.sitepoint.com/build-javascript-countdown-timer-no-dependencies/
+    function getTimeRemaining(endtime){
+        var t = Date.parse(endtime) - Date.parse(new Date());
+        var seconds = Math.floor( (t/1000) % 60 );
+        var minutes = Math.floor( (t/1000/60) % 60 );
+//        var hours = Math.floor( (t/(1000*60*60)) % 24 );
+        return {
+            'total': t,
+            'minutes': minutes,
+            'seconds': seconds
+        };
+    }
+
+    function initializeClock(id, duration){
+        var endtime = new Date();
+
+        if (duration % 1 === 0) {
+            endtime.setMinutes(endtime.getMinutes()+duration);  }
+        else {
+            remainder = (duration % 1);
+            minutes_duration = duration - remainder;
+            endtime.setMinutes(endtime.getMinutes()+minutes_duration);
+            endtime.setSeconds(endtime.getSeconds()+(remainder*60));    }
+
+        var clock = document.getElementById(id);
+//        if (document.getElementById('clock').innerHTML.indexOf("Time")!=-1) {
+//
+//        }
+
+        var timeinterval = setInterval(function(){
+            var t = getTimeRemaining(endtime);
+            clock.innerHTML =
+                    'Timer1: ' + t.minutes + ":" + t.seconds;
+            if(t.total<=0){
+                su.text = "Timer has finished";
+                sayThings();
+                clearInterval(timeinterval);
+            }
+        },1000);
     }
 </script>
 
-
-<body>
-
-</body>
-</html>
