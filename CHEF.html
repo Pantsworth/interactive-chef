@@ -7,12 +7,11 @@
 <nav class="navbar navbar-fixed-top">
     <div class="container-fluid">
         <div class="centered-title2">
-            <div><h4>EXAMPLE COMMANDS: &nbsp &nbsp "COMPUTER, HOW MUCH [INGREDIENT] DO I NEED?" &nbsp &nbsp "COMPUTER, NEXT STEP" &nbsp &nbsp "COMPUTER, PREVIOUS STEP"</h4></div>
+            <div><h4>EXAMPLE COMMANDS: &nbsp &nbsp "COMPUTER, HOW MUCH [INGREDIENT] DO I NEED?" &nbsp &nbsp "COMPUTER, NEXT STEP"</h4></div>
         </div>
 
     </div>
 </nav>
-<body onload="startRec()"></body>
 
 <audio id="ding" src="ding.mp3" preload="auto"></audio>
 
@@ -62,10 +61,10 @@
             </div>
         <div id="clock" class="col-sm-3"><p>
             <h3>STATUS:</h3><p id="status"> Listening...</p>
-            <br>
-            <p id='log'></p>
             <h3><div id="timerdiv"></div></h3>
             <h3><div id="timerdiv2"></div></h3>
+            <br>
+            <p id='log'></p>
 
         </div>
     </div>
@@ -226,7 +225,8 @@ document.onkeydown = function(e) {
             "12. Bake cookies 1 tray at a time until cookies are golden brown and still puffy, and edges have begun to set but centers are still soft, 10 to 14 minutes, rotating baking sheet halfway through baking."];
 
     current_step = 1;
-
+    stop_timer1 = false;
+    stop_timer2 = false;
     wit_result = "";
 
     //************************************** FETCHES WIT RESPONSE + RUNS FUNCTIONS *************************************
@@ -234,6 +234,7 @@ document.onkeydown = function(e) {
 
         responding();
         console.log(fulltext);
+        fulltext = fulltext.toLowerCase();
 
 
         next_test = fulltext.indexOf("next");
@@ -242,19 +243,25 @@ document.onkeydown = function(e) {
         last_test = fulltext.indexOf("last");
         repeat_test = fulltext.indexOf("repeat");
         timer_test = fulltext.indexOf("timer");
+        hello_test = fulltext.indexOf("hello");
+        hi_test = fulltext.indexOf("hi");
+        high_test = fulltext.indexOf("high");
 
 
         document.getElementById('log').innerHTML= "I heard: " + fulltext + "<br>" + document.getElementById('log').innerHTML;
 
 
         // CATCH ALL THE STEP QUERIES TO SPEED RETURNS (VERY SIMPLE PROCESSING)
-        if ((fulltext.indexOf("next") !== -1) || (fulltext.indexOf("Next")!==-1) || (fulltext.indexOf("forward")!==-1))  {
+        if ((fulltext.indexOf("next") !== -1) || (fulltext.indexOf("forward")!==-1))  {
             nextStep();
         }
-        else if ((previous_test !== -1) || (last_test!==-1) || (fulltext.indexOf("Previous")!==-1) ||(back_test!==-1)) {
+        else if ((previous_test !== -1) || (last_test!==-1) ||(back_test!==-1)) {
             previousStep();
         }
-
+        else if ((hello_test!=-1) || (hi_test!=-1) || (high_test!=-1)) {
+            su.text = "Hi!";
+            sayThings();
+        }
         else if ((fulltext.indexOf("repeat")!==-1) && fulltext.indexOf("step")!==-1) {
             repeatStep();
         }
@@ -269,8 +276,7 @@ document.onkeydown = function(e) {
 
             }
             else if ((fulltext.indexOf("set")!=-1) || fulltext.indexOf("make")!=-1) {
-                console.log(text2num(fulltext));
-                console.log(parseFloat(fulltext));
+
             }
         }
 
@@ -339,22 +345,6 @@ document.onkeydown = function(e) {
         su.lang = "en";
         su.text = "Haggis World";
         sayThings();
-//        var commands = {
-//            'Computer *fulltext': getWitResponse,
-//            'hello there': testResponse
-//
-//        };
-//
-//        if (annyang) {
-//            // Add our commands to annyang
-//            annyang.addCommands(commands);
-//
-//            // Start listening. You can call this here, or attach this call to an event, button, etc.
-//            annyang.start();
-//            console.log("listening");
-//            startUp();
-//        }
-
     }
 
 
@@ -366,10 +356,13 @@ document.onkeydown = function(e) {
 
     var testResponse = function testResponse() {
         console.log("HIIIIIIIIIII");
+        su.text = "Hi!";
+        sayThings();
     };
 
     var commands = {
         'Computer *fulltext': getWitResponse,
+        'hi computer': testResponse,
         'hello there': testResponse
     };
 
@@ -378,7 +371,7 @@ document.onkeydown = function(e) {
         annyang.addCommands(commands);
 
         // Start listening. You can call this here, or attach this call to an event, button, etc.
-        annyang.start();
+        annyang.start({autoRestart: true});
         console.log("listening");
         startUp();
     }
@@ -406,11 +399,11 @@ document.onkeydown = function(e) {
 
 
         for (i=0; i < ingredients_list.length; i++) {
-            console.log(ingredients_list[i]);
+//            console.log(ingredients_list[i]);
             console.log("search term is: " + search_term);
             if (search_term == "flower")  { result = "flour"; }
             result = ingredients_list[i].indexOf(wit_result['outcomes'][0]['entities']['food'][0]['value'].toString());
-            console.log(result);
+//            console.log(result);
             if (result == -1) { }
             else {
                 if (!found) {
@@ -419,9 +412,9 @@ document.onkeydown = function(e) {
                 else {
                     su.text = su.text + " " + ingredients_list[i].toString();
                 }
-                console.log("the spoken text is: " + su.text);
+//                console.log("the spoken text is: " + su.text);
                 found=true;
-                console.log("FOUND!!!!");
+//                console.log("FOUND!!!!");
             }
         }
 
@@ -529,8 +522,19 @@ document.onkeydown = function(e) {
         };
     }
 
-    function initializeClock(id, duration){
+    function cancelTimers() {
+        stop_timer1 = true;
+        stop_timer2 = true;
+        document.getElementById('timerdiv').innerHTML = "";
+        document.getElementById('timerdiv2').innerHTML = "";
+        su.text = "Timers are cancelled";
+        sayThings();
+    }
 
+
+    function initializeClock(id, duration, label){
+        stop_timer1 = false;
+        stop_timer2 = false;
         var endtime = new Date();
 
         if (duration % 1 === 0) {
@@ -547,17 +551,21 @@ document.onkeydown = function(e) {
 
         // IF WE ALREADY HAVE A TIMER, MAKE A NEW ONE
         if (document.getElementById('timerdiv').innerHTML.indexOf("Time")!=-1) {
-                initializeClock('timerdiv2', duration);
+                initializeClock('timerdiv2', duration, label);
         }
 
         var timeinterval = setInterval(function(){
-            var t = getTimeRemaining(endtime);
-            clock.innerHTML =
-                    'Timer1: ' + t.minutes + ":" + t.seconds;
-            if(t.total<=0){
-                su.text = "Timer has finished";
-                sayThings();
-                clearInterval(timeinterval);
+            if (stop_timer1) {
+                clearInterval(timeinterval)
+            }
+            else {
+                var t = getTimeRemaining(endtime);
+                clock.innerHTML = label.toString() + ': ' + t.minutes + ":" + t.seconds;
+                if (t.total <= 0) {
+                    su.text = "Timer has finished";
+                    sayThings();
+                    clearInterval(timeinterval);
+                }
             }
         },1000);
 
