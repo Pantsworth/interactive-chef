@@ -35,7 +35,7 @@
             2 teaspoons vanilla extract<br>
             1 large egg<br>
             1 large egg yolk<br>
-            1 cup bittersweet or semi-sweet chocolate chips<br>
+            1 cup bittersweet chocolate chips<br>
             <br>
             <b>YIELD:</b> 16 very large cookies
 
@@ -80,23 +80,31 @@
 <!--<script src="js/bootstrap.js"></script>-->
 <link rel="stylesheet" type="text/css" href="css/recipe-style.css">
 
-<!--<script>-->
-    <!--function startTime() {-->
-        <!--var today = new Date();-->
-        <!--var h = today.getHours();-->
-        <!--var m = today.getMinutes()+2;-->
-        <!--var s = today.getSeconds();-->
-        <!--m = checkTime(m);-->
-        <!--s = checkTime(s);-->
-        <!--document.getElementById('log').innerHTML =-->
-                <!--h + ":" + m + ":" + s;-->
-        <!--var t = setTimeout(startTime, 500);-->
-    <!--}-->
-    <!--function checkTime(i) {-->
-        <!--if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10-->
-        <!--return i;-->
-    <!--}-->
-<!--</script>-->
+<script>
+
+//************************************** KEYPRESSES *************************************
+
+document.onkeydown = function(e) {
+    switch (e.keyCode) {
+        case 37:
+//            console.log("left");
+            break;
+        case 38:
+            previousStep();
+//            console.log("up");
+            break;
+        case 39:
+//            console.log("right");
+            break;
+        case 40:
+            nextStep();
+//            console.log("down");
+            break;
+    }
+};
+</script>
+
+
 <script>
     var Small = {
         'zero': 0,
@@ -174,6 +182,7 @@
         }
     }
 </script>
+
 <script>
     //************************************** TABLE OF CONTENTS ************************************
     //                              VARIABLE SETUP
@@ -203,7 +212,7 @@
             "4. Continue cooking, swirling pan constantly until butter is dark golden brown and has nutty aroma, 1 to 3 minutes.",
             "5. Remove skillet from heat and, using heatproof spatula, transfer browned butter to large heatproof bowl. Stir remaining 4 tablespoons butter into hot butter until completely melted.",
             "6. Add both sugars, salt, and vanilla to bowl with butter and whisk until fully incorporated.",
-            "7.Add egg and yolk and whisk until mixture is smooth with no sugar lumps remaining, about 30 seconds.",
+            "7. Add egg and yolk and whisk until mixture is smooth with no sugar lumps remaining, about 30 seconds.",
             "8. Let mixture stand 3 minutes, then whisk for 30 seconds. Repeat process of resting and whisking 2 more times until mixture is thick, smooth and shiny.",
             "9. Using rubber spatula or wooden spoon, stir in flour mixture until just combined, about 1 minute.",
             "10. Stir in chocolate chips, giving dough final stir to ensure no flour pockets remain.",
@@ -455,11 +464,15 @@
             document.getElementById("step" + (current_step+1).toString()).innerHTML = step_list[current_step+1];
 
             // BOLD and HEADLINE THE NEW STEP
-            document.getElementById("step" + current_step.toString()).innerHTML = "<b><h2>" + document.getElementById('step' + current_step).innerHTML + "</h2></b>";
+            document.getElementById("step" + current_step.toString()).innerHTML = "<b><h2 class='currentstep'>" + document.getElementById('step' + current_step).innerHTML + "</h2></b>";
             su.text = step_list[current_step];
 
         }
-        else {  su.text = "You are on the first step. First step is: " + step_list[current_step];   }
+
+        else {
+            su.text = "You are on the first step. First step is: " + step_list[current_step];
+        }
+
         sayThings();
     }
 
@@ -482,6 +495,7 @@
     }
 
     function initializeClock(id, duration){
+
         var endtime = new Date();
 
         if (duration % 1 === 0) {
@@ -490,7 +504,8 @@
             remainder = (duration % 1);
             minutes_duration = duration - remainder;
             endtime.setMinutes(endtime.getMinutes()+minutes_duration);
-            endtime.setSeconds(endtime.getSeconds()+(remainder*60));    }
+            endtime.setSeconds(endtime.getSeconds()+(remainder*60));
+        }
 
         var clock = document.getElementById(id);
 //        if (document.getElementById('clock').innerHTML.indexOf("Time")!=-1) {
@@ -507,6 +522,12 @@
                 clearInterval(timeinterval);
             }
         },1000);
+
+        su.text = "Set Timer for " + duration.toString() + " minutes";
+        sayThings();
     }
+
+
+
 </script>
 
