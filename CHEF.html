@@ -4,22 +4,33 @@
     <meta charset="UTF-8">
     <title>CHEFBOTSOUS</title>
 </head>
+<nav class="navbar">
+    <div class="container-fluid">
+        <div class="centered-title2">
+            <div><h4>EXAMPLE COMMANDS: &nbsp &nbsp "COMPUTER, HOW MUCH [INGREDIENT] DO I NEED?" &nbsp &nbsp "COMPUTER, NEXT STEP" &nbsp &nbsp "COMPUTER, PREVIOUS STEP"</h4></div>
+        </div>
 
+    </div>
+</nav>
 
 
 <audio id="ding" src="ding.mp3" preload="auto"></audio>
+<div class="imgicon"><img class="img-icon" src="chefhat.png" height=50px></div>
 
 <div class="container">
+
     <div class="row">
-        <div class="col-sm-3">            <br><br><br><br>
+        <h2 class="centered-title">CHOCOLATE CHIP COOKIES</h2>
+
+        <div class="col-sm-3">
 
             <h3>INGREDIENTS</h3>
             <br>
-            1 3⁄4 cups unbleached all-purpose flour (8 3/4 ounces)<br>
+            1 3⁄4 cups unbleached all-purpose flour<br>
             1⁄2 teaspoon baking soda<br>
             14 tablespoons unsalted butter (1 3/4 sticks)<br>
-            1⁄2 cup granulated sugar (3 1/2 ounces)<br>
-            3⁄4 cup packed dark brown sugar (5 1/4 ounces)<br>
+            1⁄2 cup granulated sugar<br>
+            3⁄4 cup packed dark brown sugar<br>
             1/4 teaspoon salt<br>
             2 teaspoons vanilla extract<br>
             1 large egg<br>
@@ -29,8 +40,8 @@
             <b>YIELD:</b> 16 very large cookies
 
         </div>
-        <div class="col-sm-6"><h2 class="centered-title">CHOCOLATE CHIP COOKIES</h2>
-            <br>
+
+        <div class="col-sm-6">
             <h3>DIRECTIONS</h3>
             <div id="steps">
             <!--<div id="step1">1. Adjust oven rack to middle position and heat oven to 375 degrees. Line 2 large (18- by 12- inch) baking sheets with parchment paper. Whisk flour and baking soda together in medium bowl; set aside.-->
@@ -48,12 +59,15 @@
             <!--<div id = "step5">5. Bake cookies 1 tray at a time until cookies are golden brown and still puffy, and edges have begun to set but centers are still soft, 10 to 14 minutes, rotating baking sheet halfway through baking. Transfer baking seet to wire rack; cool cookies completely before serving.        </div>-->
             <!--</div>-->
             </div>
-        <div id="clock" class="col-sm-3"><p><br><br><br><br><h3>Status:</h3><p id="status"> Listening...</p><br><p id='log'></p>
+            </div>
+        <div id="clock" class="col-sm-3"><p>
+            <h3>STATUS:</h3><p id="status"> Listening...</p>
+            <br>
+            <p id='log'></p>
             <h3><div id="timerdiv"></div></h3>
         </div>
     </div>
     </div>
-</div>
 
 
 </html>
@@ -214,9 +228,11 @@
 
         next_test = fulltext.indexOf("next");
         previous_test = fulltext.indexOf("previous");
+        back_test = fulltext.indexOf("back");
         last_test = fulltext.indexOf("last");
         repeat_test = fulltext.indexOf("repeat");
         timer_test = fulltext.indexOf("timer");
+
 
         document.getElementById('log').innerHTML= "I heard: " + fulltext + "<br>" + document.getElementById('log').innerHTML;
 
@@ -225,7 +241,7 @@
         if ((fulltext.indexOf("next") !== -1) || (fulltext.indexOf("Next")!==-1) || (fulltext.indexOf("forward")!==-1))  {
             nextStep();
         }
-        else if ((previous_test !== -1) || (last_test!==-1) || (fulltext.indexOf("Previous")!==-1)) {
+        else if ((previous_test !== -1) || (last_test!==-1) || (fulltext.indexOf("Previous")!==-1) ||(back_test!==-1)) {
             previousStep();
         }
 
@@ -238,6 +254,9 @@
             console.log(parseInt(fulltext));
 
             if ((fulltext.indexOf("how much")!=-1) || (fulltext.indexOf("left"))) {
+            }
+            else if ((fulltext.indexOf("cancel"))!=-1) {
+
             }
             else if ((fulltext.indexOf("set")!=-1) || fulltext.indexOf("make")!=-1) {
                 console.log(text2num(fulltext));
@@ -269,7 +288,7 @@
                     }
 
                     else {
-                        su.text = "Sorry, I didn't quite catch that";
+                        su.text = "Response Failed";
                         sayThings();
                     }
                 }
