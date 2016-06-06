@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>CHEFBOTSOUS</title>
 </head>
-<nav class="navbar">
+<nav class="navbar navbar-fixed-top">
     <div class="container-fluid">
         <div class="centered-title2">
             <div><h4>EXAMPLE COMMANDS: &nbsp &nbsp "COMPUTER, HOW MUCH [INGREDIENT] DO I NEED?" &nbsp &nbsp "COMPUTER, NEXT STEP" &nbsp &nbsp "COMPUTER, PREVIOUS STEP"</h4></div>
@@ -15,9 +15,9 @@
 
 
 <audio id="ding" src="ding.mp3" preload="auto"></audio>
-<div class="imgicon"><img class="img-icon" src="chefhat.png" height=50px></div>
 
 <div class="container">
+    <div class="imgicon"><img class="img-icon" src="chefhat.png" height=50px></div>
 
     <div class="row">
         <h2 class="centered-title">CHOCOLATE CHIP COOKIES</h2>
@@ -175,6 +175,24 @@
     }
 </script>
 <script>
+    //************************************** TABLE OF CONTENTS ************************************
+    //                              VARIABLE SETUP
+    //                              SPEECH REC SETUP
+    //                              STARTUP AND COMMAND FUNCTIONS
+    //                              SPEECH REC RESPONSES (getWitResponse)
+    //                              INGREDIENT AMOUNTS
+    //                              TEXT TO SPEECH
+    //                              UI
+    //                              STEP CHANGES
+    //                              TIMERS
+
+
+
+
+
+
+    //************************************** VARIABLE SETUP *************************************
+
     ingredients_list = ["1 teaspoon salt", "2 teaspoons vanilla extract", "one large egg", "one large egg yolk",
         "1 and 3 fourths of a cup all-purpose flour", "14 tablespoons unsalted butter, or one point seven five sticks",
         "one half teaspoon baking soda", "one half cup granulated sugar", "three fourths of a cup dark brown sugar",
@@ -195,6 +213,11 @@
     current_step = 1;
 
     wit_result = "";
+
+
+
+    //************************************** SET UP SPEECH RECOGNITION *************************************
+
     // Test browser support
     window.SpeechRecognition = window.SpeechRecognition ||
             window.webkitSpeechRecognition ||
@@ -218,6 +241,38 @@
         su.text = "Haggis World";
         sayThings();
     }
+
+
+    //************************************** STARTUP, COMMANDS*************************************
+    function startUp() {
+        dir_list = "";
+        for (i=1; i<step_list.length;i++) {
+            dir_list = dir_list + "<br><div" + " id=" + "step" + i.toString() +  ">" + step_list[i] + "</div>";
+        }
+//        console.log(dir_list);
+        document.getElementById('steps').innerHTML = dir_list;
+        document.getElementById("step" + current_step.toString()).innerHTML = "<b><h2>" + document.getElementById('step' + current_step).innerHTML + "</h2></b>";
+
+//        initializeClock('timerdiv', 1.5);
+    }
+
+    var commands = {
+        'Computer *fulltext': getWitResponse
+    };
+
+    console.log("listening2");
+
+    if (annyang) {
+        // Add our commands to annyang
+        annyang.addCommands(commands);
+
+        // Start listening. You can call this here, or attach this call to an event, button, etc.
+        annyang.start();
+        console.log("listening");
+        startUp();
+    }
+
+
 
     //************************************** FETCHES WIT RESPONSE + RUNS FUNCTIONS *************************************
     var getWitResponse = function (fulltext) {
@@ -332,6 +387,8 @@
         sayThings();
     }
 
+
+
     //************************************** TEXT TO SPEECH *************************************
 
     function sayThings() {
@@ -348,6 +405,8 @@
         speechSynthesis.speak(su);
         annyang.resume();
     }
+
+
 
     //************************************** UI ELEMENTS *************************************
     function responding() {
@@ -371,6 +430,7 @@
         speechSynthesis.speak(su);
         annyang.resume();
     }
+
 
 
     //************************************** STEP CHANGES *************************************
@@ -405,34 +465,8 @@
 
 
 
-    //************************************** THE BASICS *************************************
-    function startUp() {
-        dir_list = "";
-        for (i=1; i<step_list.length;i++) {
-            dir_list = dir_list + "<br><div" + " id=" + "step" + i.toString() +  ">" + step_list[i] + "</div>";
-        }
-//        console.log(dir_list);
-        document.getElementById('steps').innerHTML = dir_list;
-        document.getElementById("step" + current_step.toString()).innerHTML = "<b><h2>" + document.getElementById('step' + current_step).innerHTML + "</h2></b>";
 
-//        initializeClock('timerdiv', 1.5);
-    }
-
-    var commands = {
-        'Computer *fulltext': getWitResponse
-    };
-
-    console.log("listening2");
-
-    if (annyang) {
-        // Add our commands to annyang
-        annyang.addCommands(commands);
-
-        // Start listening. You can call this here, or attach this call to an event, button, etc.
-        annyang.start();
-        console.log("listening");
-        startUp();
-    }
+    //************************************** TIMERS *************************************
 
     // TIMER code thanks to https://www.sitepoint.com/build-javascript-countdown-timer-no-dependencies/
     function getTimeRemaining(endtime){
