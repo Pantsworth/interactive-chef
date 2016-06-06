@@ -12,7 +12,7 @@
 
     </div>
 </nav>
-
+<body onload="startRec()"></body>
 
 <audio id="ding" src="ding.mp3" preload="auto"></audio>
 
@@ -65,6 +65,8 @@
             <br>
             <p id='log'></p>
             <h3><div id="timerdiv"></div></h3>
+            <h3><div id="timerdiv2"></div></h3>
+
         </div>
     </div>
     </div>
@@ -80,8 +82,12 @@
 <!--<script src="js/bootstrap.js"></script>-->
 <link rel="stylesheet" type="text/css" href="css/recipe-style.css">
 
-<script>
 
+
+
+
+
+<script>
 //************************************** KEYPRESSES *************************************
 
 document.onkeydown = function(e) {
@@ -105,83 +111,83 @@ document.onkeydown = function(e) {
 </script>
 
 
-<script>
-    var Small = {
-        'zero': 0,
-        'one': 1,
-        'two': 2,
-        'three': 3,
-        'four': 4,
-        'five': 5,
-        'six': 6,
-        'seven': 7,
-        'eight': 8,
-        'nine': 9,
-        'ten': 10,
-        'eleven': 11,
-        'twelve': 12,
-        'thirteen': 13,
-        'fourteen': 14,
-        'fifteen': 15,
-        'sixteen': 16,
-        'seventeen': 17,
-        'eighteen': 18,
-        'nineteen': 19,
-        'twenty': 20,
-        'thirty': 30,
-        'forty': 40,
-        'fifty': 50,
-        'sixty': 60,
-        'seventy': 70,
-        'eighty': 80,
-        'ninety': 90
-    };
+<!--<script>-->
+    <!--var Small = {-->
+        <!--'zero': 0,-->
+        <!--'one': 1,-->
+        <!--'two': 2,-->
+        <!--'three': 3,-->
+        <!--'four': 4,-->
+        <!--'five': 5,-->
+        <!--'six': 6,-->
+        <!--'seven': 7,-->
+        <!--'eight': 8,-->
+        <!--'nine': 9,-->
+        <!--'ten': 10,-->
+        <!--'eleven': 11,-->
+        <!--'twelve': 12,-->
+        <!--'thirteen': 13,-->
+        <!--'fourteen': 14,-->
+        <!--'fifteen': 15,-->
+        <!--'sixteen': 16,-->
+        <!--'seventeen': 17,-->
+        <!--'eighteen': 18,-->
+        <!--'nineteen': 19,-->
+        <!--'twenty': 20,-->
+        <!--'thirty': 30,-->
+        <!--'forty': 40,-->
+        <!--'fifty': 50,-->
+        <!--'sixty': 60,-->
+        <!--'seventy': 70,-->
+        <!--'eighty': 80,-->
+        <!--'ninety': 90-->
+    <!--};-->
 
-    var Magnitude = {
-        'thousand':     1000,
-        'million':      1000000,
-        'billion':      1000000000,
-        'trillion':     1000000000000,
-        'quadrillion':  1000000000000000,
-        'quintillion':  1000000000000000000,
-        'sextillion':   1000000000000000000000,
-        'septillion':   1000000000000000000000000,
-        'octillion':    1000000000000000000000000000,
-        'nonillion':    1000000000000000000000000000000,
-        'decillion':    1000000000000000000000000000000000
-    };
+    <!--var Magnitude = {-->
+        <!--'thousand':     1000,-->
+        <!--'million':      1000000,-->
+        <!--'billion':      1000000000,-->
+        <!--'trillion':     1000000000000,-->
+        <!--'quadrillion':  1000000000000000,-->
+        <!--'quintillion':  1000000000000000000,-->
+        <!--'sextillion':   1000000000000000000000,-->
+        <!--'septillion':   1000000000000000000000000,-->
+        <!--'octillion':    1000000000000000000000000000,-->
+        <!--'nonillion':    1000000000000000000000000000000,-->
+        <!--'decillion':    1000000000000000000000000000000000-->
+    <!--};-->
 
-    var a, n, g;
+    <!--var a, n, g;-->
 
-    function text2num(s) {
-        a = s.toString().split(/[\s-]+/);
-        n = 0;
-        g = 0;
-        a.forEach(feach);
-        return n + g;
-    }
-    console.log(text2num("bunch of extra text thirty two"));
+    <!--function text2num(s) {-->
+        <!--a = s.toString().split(/[\s-]+/);-->
+        <!--n = 0;-->
+        <!--g = 0;-->
+        <!--a.forEach(feach);-->
+        <!--return n + g;-->
+    <!--}-->
+    <!--console.log(text2num("bunch of extra text thirty two"));-->
 
-    function feach(w) {
-        var x = Small[w];
-        if (x != null) {
-            g = g + x;
-        }
-        else if (w == "hundred") {
-            g = g * 100;
-        }
-        else {
-            x = Magnitude[w];
-            if (x != null) {
-                n = n + g * x;
-                g = 0;
-            }
-            else {
-//                alert("Unknown number: "+w);
-            }
-        }
-    }
-</script>
+    <!--function feach(w) {-->
+        <!--var x = Small[w];-->
+        <!--if (x != null) {-->
+            <!--g = g + x;-->
+        <!--}-->
+        <!--else if (w == "hundred") {-->
+            <!--g = g * 100;-->
+        <!--}-->
+        <!--else {-->
+            <!--x = Magnitude[w];-->
+            <!--if (x != null) {-->
+                <!--n = n + g * x;-->
+                <!--g = 0;-->
+            <!--}-->
+            <!--else {-->
+<!--//                alert("Unknown number: "+w);-->
+            <!--}-->
+        <!--}-->
+    <!--}-->
+<!--</script>-->
 
 <script>
     //************************************** TABLE OF CONTENTS ************************************
@@ -222,66 +228,6 @@ document.onkeydown = function(e) {
     current_step = 1;
 
     wit_result = "";
-
-
-
-    //************************************** SET UP SPEECH RECOGNITION *************************************
-
-    // Test browser support
-    window.SpeechRecognition = window.SpeechRecognition ||
-            window.webkitSpeechRecognition ||
-            null;
-    if (window.SpeechRecognition === null) {
-        document.getElementById('ws-unsupported').classList.remove('hidden');
-        document.getElementById('button-play-ws').setAttribute('disabled', 'disabled');
-        document.getElementById('button-stop-ws').setAttribute('disabled', 'disabled');
-        console.log("can't do speech rec")
-    }
-
-    else {
-        var recognizer = new window.SpeechRecognition();
-        var transcription = document.getElementById('transcription');
-        var log = document.getElementById('log');
-
-        //text-to-voice stuff
-        var su = new SpeechSynthesisUtterance();
-        su.rate = 0.75;
-        su.lang = "en";
-        su.text = "Haggis World";
-        sayThings();
-    }
-
-
-    //************************************** STARTUP, COMMANDS*************************************
-    function startUp() {
-        dir_list = "";
-        for (i=1; i<step_list.length;i++) {
-            dir_list = dir_list + "<br><div" + " id=" + "step" + i.toString() +  ">" + step_list[i] + "</div>";
-        }
-//        console.log(dir_list);
-        document.getElementById('steps').innerHTML = dir_list;
-        document.getElementById("step" + current_step.toString()).innerHTML = "<b><h2>" + document.getElementById('step' + current_step).innerHTML + "</h2></b>";
-
-//        initializeClock('timerdiv', 1.5);
-    }
-
-    var commands = {
-        'Computer *fulltext': getWitResponse
-    };
-
-    console.log("listening2");
-
-    if (annyang) {
-        // Add our commands to annyang
-        annyang.addCommands(commands);
-
-        // Start listening. You can call this here, or attach this call to an event, button, etc.
-        annyang.start();
-        console.log("listening");
-        startUp();
-    }
-
-
 
     //************************************** FETCHES WIT RESPONSE + RUNS FUNCTIONS *************************************
     var getWitResponse = function (fulltext) {
@@ -344,14 +290,21 @@ document.onkeydown = function(e) {
                     console.log("success!", response);
                     console.log(response['outcomes']);
 
-                    if (typeof(wit_result['outcomes'][0]['entities'] !== 'undefined')) {
-                        if (typeof(wit_result['outcomes'][0]['entities']['food'][0]['value']) !== 'undefined') {
-                            console.log(wit_result['outcomes'][0]['entities']['food'][0]['value']);
-                            ingredient_amounts();
+                    try {
+                        ingredient = wit_result['outcomes'][0]['entities']['food'][0]['value'];
+                        if (typeof(wit_result['outcomes'][0]['entities'] !== 'undefined')) {
+                            if (typeof(wit_result['outcomes'][0]['entities']['food'][0]['value']) !== 'undefined') {
+                                console.log(wit_result['outcomes'][0]['entities']['food'][0]['value']);
+                                ingredient_amounts();
+                            }
+                        }
+                        else {
+                            su.text = "Response Failed";
+                            sayThings();
                         }
                     }
 
-                    else {
+                    catch (TypeError) {
                         su.text = "Response Failed";
                         sayThings();
                     }
@@ -360,6 +313,88 @@ document.onkeydown = function(e) {
         }
         listening();
     };
+
+
+    //************************************** SET UP SPEECH RECOGNITION *************************************
+
+    // Test browser support
+    window.SpeechRecognition = window.SpeechRecognition ||
+            window.webkitSpeechRecognition ||
+            null;
+    if (window.SpeechRecognition === null) {
+        document.getElementById('ws-unsupported').classList.remove('hidden');
+        document.getElementById('button-play-ws').setAttribute('disabled', 'disabled');
+        document.getElementById('button-stop-ws').setAttribute('disabled', 'disabled');
+        console.log("can't do speech rec")
+    }
+
+    else {
+        var recognizer = new window.SpeechRecognition();
+        var transcription = document.getElementById('transcription');
+        var log = document.getElementById('log');
+
+        //text-to-voice stuff
+        var su = new SpeechSynthesisUtterance();
+        su.rate = 0.75;
+        su.lang = "en";
+        su.text = "Haggis World";
+        sayThings();
+//        var commands = {
+//            'Computer *fulltext': getWitResponse,
+//            'hello there': testResponse
+//
+//        };
+//
+//        if (annyang) {
+//            // Add our commands to annyang
+//            annyang.addCommands(commands);
+//
+//            // Start listening. You can call this here, or attach this call to an event, button, etc.
+//            annyang.start();
+//            console.log("listening");
+//            startUp();
+//        }
+
+    }
+
+
+    //************************************** STARTUP, COMMANDS*************************************
+
+    function startRec() {
+
+    }
+
+    var testResponse = function testResponse() {
+        console.log("HIIIIIIIIIII");
+    };
+
+    var commands = {
+        'Computer *fulltext': getWitResponse,
+        'hello there': testResponse
+    };
+
+    if (annyang) {
+        // Add our commands to annyang
+        annyang.addCommands(commands);
+
+        // Start listening. You can call this here, or attach this call to an event, button, etc.
+        annyang.start();
+        console.log("listening");
+        startUp();
+    }
+
+
+    function startUp() {
+        dir_list = "";
+        for (i=1; i<step_list.length;i++) {
+            dir_list = dir_list + "<br><div" + " id=" + "step" + i.toString() +  ">" + step_list[i] + "</div>";
+        }
+//        console.log(dir_list);
+        document.getElementById('steps').innerHTML = dir_list;
+        document.getElementById("step" + current_step.toString()).innerHTML = "<b><h2>" + document.getElementById('step' + current_step).innerHTML + "</h2></b>";
+
+//        initializeClock('timerdiv', 1.5);
+    }
 
 
     //************************************** SPEAKS INGREDIENT AMOUNTS *************************************
@@ -508,9 +543,12 @@ document.onkeydown = function(e) {
         }
 
         var clock = document.getElementById(id);
-//        if (document.getElementById('clock').innerHTML.indexOf("Time")!=-1) {
-//
-//        }
+
+
+        // IF WE ALREADY HAVE A TIMER, MAKE A NEW ONE
+        if (document.getElementById('timerdiv').innerHTML.indexOf("Time")!=-1) {
+                initializeClock('timerdiv2', duration);
+        }
 
         var timeinterval = setInterval(function(){
             var t = getTimeRemaining(endtime);
