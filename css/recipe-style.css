@@ -4,6 +4,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
+
 .centered-title {
     text-align: center;
 }
@@ -15,13 +16,17 @@
 }
 
 .navbar {
-    background-color: #e56804;
-    margin-bottom: 1%;
+    background-color: #000000;
 }
 
+.toptoptop {
+    background-color: #000000;
+}
+
+
 .imgicon {
-    size: 20px;
-    text-align:center;
+    size: 50px;
+    /*text-align:center;*/
 }
 
 .currentstep {
@@ -30,3 +35,29 @@
 .h2 {
     size: 400px;
 }
+
+.navbar-fixed-top {
+    padding: 10px;
+    height: 10px;
+    transition: background 0.5s ease-in-out 0s, padding 0.5s ease-in-out 0s;
+}
+
+.with-borders {
+    padding-left: 10px;
+    padding-right: 10px;
+    border-left: 1px solid #777777;
+    border-right: 1px solid #777777;
+}
+
+.bottom-pad {
+    padding-bottom: 150px;
+}
+/*.navbar-brand {*/
+    /*float: left;*/
+    /*font-size: 18px;*/
+    /*height: 10px;*/
+    /*line-height: 2px;*/
+    /*padding: 2px;*/
+/*}*/
+
+/*@navbar-height: 20px;*/
